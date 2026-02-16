@@ -1,1 +1,12 @@
-# BUCSarap
+BUCSarap -  Root folder(contents)
+    - .env
+    - .venv
+    - .gitignore (if jetbrains gamit nyo maga auto generate yan ng .gitignore delte nyonalng; use only one)
+    - backend dic
+    - frontend dic
+
+How to initialize python's virtual env (source: <https://www.w3schools.com/python/python_virtualenv.asp>):
+
+python -m venv venv
+
+venv\Scripts\activate
