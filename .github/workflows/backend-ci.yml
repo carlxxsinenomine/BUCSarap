@@ -47,7 +47,7 @@ jobs:
         if: ${{ hashFiles('requirements.txt') != ''}}
         run: |
           pip install -r requirements.txt
-      - name: 
+      - name: Python linter
         run: |
           # This is from the official Python starter template ng Github ( Copy Pasted )
           # stop the build if there are Python syntax errors or undefined names
