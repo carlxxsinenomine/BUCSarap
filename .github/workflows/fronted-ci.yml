@@ -1,0 +1,44 @@
+# Reference: https://medium.com/@developerjamiu/setting-up-ci-cd-for-flutter-apps-a841b651e70a
+name: Fronted CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'fronted/**'
+      - '.github/workflows/frontend-ci.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/frontend-ci.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-lates
+    defaults:
+      run:
+        working-directory: ./frontend
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2 # Repo: https://github.com/subosito/flutter-action
+        with:
+          channel: stable
+          flutter-version: 3.32.8
+      - run: flutter --version
+      - name: Get Flutter packages
+        run: |
+          flutter pub get
+
+      - name: Check for lints
+        run: |
+          flutter analyze
+
+#      In the future if hindi ako tamarin imma write my tests
+#      Pero for now comment this out just like on the backend ci
+#      - name: Run all tests
+#        run: |
+#          flutter test
