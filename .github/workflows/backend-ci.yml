@@ -1,0 +1,55 @@
+# Resources I took
+# https://medium.com/@developerjamiu/setting-up-ci-cd-for-flutter-apps-a841b651e70a
+# https://dev.to/dipe_/deploying-a-fastapi-application-with-cicd-pipeline-hng-task-3-5598
+
+name: Python CI  # Name of the workflow
+# Trigger events
+# This section specifies that the workflow should be triggered on push and 
+# pull_request events for the master and devbranches.
+# This workflow runs when you push to any of these branches or when a PR is opened.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-ci.yml'
+      
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-ci.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend   # so all commands run inside backend/
+    steps:
+      - uses: actions/checkout@v4
+      # For Python
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.13" # Eto version ng python ko eh HAHAHAHA
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip # Download the lates version of PIP lemaw
+          pip install flake8 pytest # Linter
+          # TODO: make sure na meron requirements.txt for the list of libs na magagamit
+          # Ilagay sa root folder
+
+      - name: 
+        run: |
+          # This is from the official Python starter template ng Github ( Copy Pasted )
+          # stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      
+      - name: Test with pytest
+        run: pytest
+      
