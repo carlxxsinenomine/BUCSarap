@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:frontend/main.dart';
 import 'package:frontend/screens/stall_selection_screen.dart';
@@ -50,7 +51,7 @@ class WelcomeScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(context, '/login');
                   },
-                  color: Color(0xFFFF9644).withOpacity(0.50),
+                  color: Color(0xFFFF9644).withValues(alpha: 0.50),
                   label: "I'm a food stall owner",
                   labelColor: Color(0xFFDA782B),
                 ),

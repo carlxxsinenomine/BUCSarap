@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/components/stall_selection_screen/back_button_container.dart';
-import 'package:frontend/main.dart';
 
 class StallSelectionScreen extends StatelessWidget {
   const StallSelectionScreen({super.key});
