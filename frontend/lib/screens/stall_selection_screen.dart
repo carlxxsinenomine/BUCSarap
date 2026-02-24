@@ -52,17 +52,27 @@ class StallSelectionScreen extends ConsumerWidget {
                   crossAxisCount: 2,
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
-                  childAspectRatio: 1
+                  childAspectRatio: 1,
                 ),
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
                       color: Color(0xFFFF9644).withValues(alpha: 0.50),
-                      borderRadius: BorderRadius.circular(10)
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Text(
-                      test_products[index].stallName!,
-                      style: TextStyle(color: kPrimaryColor),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          test_products[index].stallName!,
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontFamily: "flame",
+                            fontSize: 14
+                          ),
+                        ),
+                      ],
                     ),
                   );
                 },
