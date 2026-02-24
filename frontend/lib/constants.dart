@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 // Colors
-
+final Color kPrimaryColor = Color(0xFF5D371A);
+final Color kCardColor = Color(0xFF);
 // TextStyles
 final TextStyle kJetbrainsFontTitle = TextStyle(
     color: Color(0xFF5D371A),
