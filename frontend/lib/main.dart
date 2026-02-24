@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/screens/login_screen.dart';
 import 'package:frontend/screens/stall_selection_screen.dart';
 import 'package:frontend/screens/welcome_screen.dart';
 
 void main() {
-  runApp(const Main());
+  runApp(const ProviderScope(child: Main()));
 }
 
 class Main extends StatelessWidget {
