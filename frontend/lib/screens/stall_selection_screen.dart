@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:frontend/components/stall_selection_screen/back_button_container.dart';
+import 'package:frontend/shared/back_button_container.dart';
 import 'package:frontend/components/stall_selection_screen/card_container.dart';
 import 'package:frontend/main.dart';
 import 'package:frontend/models/stall_model.dart';
@@ -55,24 +55,29 @@ class StallSelectionScreen extends ConsumerWidget {
                   childAspectRatio: 1,
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFF9644).withValues(alpha: 0.50),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          test_products[index].stallName!,
-                          style: TextStyle(
-                            color: kPrimaryColor,
-                            fontFamily: "flame",
-                            fontSize: 14
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/menu_screen');
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFF9644).withValues(alpha: 0.50),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            test_products[index].stallName!,
+                            style: TextStyle(
+                              color: kPrimaryColor,
+                              fontFamily: "flame",
+                              fontSize: 14
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },

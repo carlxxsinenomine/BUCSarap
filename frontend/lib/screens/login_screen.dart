@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/constants.dart';
 
-import '../components/stall_selection_screen/back_button_container.dart';
+import '../shared/back_button_container.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
