@@ -14,5 +14,5 @@ class UserResponse(BaseModel):
 
     # Translates default dictionaries to objects
     #  This prevents app crash 
-    class Config:
+    class ConfigDict:
         from_attributes = True
