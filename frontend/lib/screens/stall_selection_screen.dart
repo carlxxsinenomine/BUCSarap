@@ -4,6 +4,7 @@ import 'package:frontend/shared/back_button_container.dart';
 import 'package:frontend/components/stall_selection_screen/card_container.dart';
 import 'package:frontend/main.dart';
 import 'package:frontend/models/stall_model.dart';
+import 'package:frontend/shared/cart_container.dart';
 import 'package:frontend/shared/order_button.dart';
 
 import '../constants.dart';
@@ -120,37 +121,11 @@ class _StallSelectionScreenState extends ConsumerState<StallSelectionScreen>
               ),
             ],
           ),
-          Positioned(
-            bottom: 0,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              height: 100,
-              width: screenWidth,
-              color: Color(0xFFD9BFA1).withValues(alpha: 0.5),
-              child: Row(
-                children: [
-                  OrderButton(
-                    onTap: () => _toggleContainer(),
-                    label: 'My Order',
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 100,
-            child: SizeTransition(
-              sizeFactor: _animation,
-              axis: Axis.vertical,
-              axisAlignment: -1,
-              child: Container(
-                height: 400,
-                width: screenWidth,
-                color: Color(0xFFD9BFA1).withValues(alpha: 0.5),
-                child: Column(),
-              ),
-            ),
-          ),
+         Positioned(
+           bottom: 0,
+           child: CartContainer(
+           ),
+         ),
         ],
       ),
     );

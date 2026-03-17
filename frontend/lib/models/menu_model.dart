@@ -1,15 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MenuModel {
-  final String? lebel;
-  const MenuModel({required this.lebel});
+  final String? label;
+  const MenuModel({required this.label});
 }
 
 List<MenuModel> testMenu = [
-  MenuModel(lebel: "Adobo"),
-  MenuModel(lebel: "Putangina"),
-  MenuModel(lebel: "Deputa"),
-  MenuModel(lebel: "HAHAHAHA"),
+  MenuModel(label: "Adobo"),
+  MenuModel(label: "Putangina"),
+  MenuModel(label: "Deputa"),
+  MenuModel(label: "HAHAHAHA"),
 ];
 
 final menuProvider = Provider((ref) {
