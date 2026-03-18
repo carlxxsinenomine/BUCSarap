@@ -42,7 +42,6 @@ class _CartContainerState extends ConsumerState<CartContainer>
 
   @override
   Widget build(BuildContext context) {
-    final testProducts = ref.read(productProvider);
     final screenWidth = MediaQuery.sizeOf(context).width;
 
     return Column(

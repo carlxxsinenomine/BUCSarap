@@ -3,11 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/shared/back_button_container.dart';
 import 'package:frontend/components/stall_selection_screen/card_container.dart';
 import 'package:frontend/main.dart';
-import 'package:frontend/models/stall_model.dart';
 import 'package:frontend/shared/cart_container.dart';
 import 'package:frontend/shared/order_button.dart';
 
 import '../constants.dart';
+import '../providers/stall_provider.dart';
 
 class StallSelectionScreen extends ConsumerStatefulWidget {
   const StallSelectionScreen({super.key});

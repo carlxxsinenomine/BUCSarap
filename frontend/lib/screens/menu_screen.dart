@@ -5,6 +5,7 @@ import 'package:frontend/main.dart';
 import 'package:frontend/models/menu_model.dart';
 
 import '../constants.dart';
+import '../providers/menu_provider.dart';
 import '../shared/back_button_container.dart';
 import '../shared/cart_container.dart';
 
