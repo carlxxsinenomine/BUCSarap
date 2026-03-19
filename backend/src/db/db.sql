@@ -2,7 +2,7 @@ CREATE TABLE owner (
   owner_id CHAR(36) PRIMARY KEY,
   owner_username varchar(55) UNIQUE NOT NULL,
   full_name varchar(55) NOT NULL,
-  hashed_password varchar(55) NOT NULL
+  hashed_password varchar(255) NOT NULL
 );
 
 CREATE TABLE stall (
