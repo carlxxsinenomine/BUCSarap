@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/components/menu_screen/count_button.dart';
 import 'package:frontend/main.dart';
 import 'package:frontend/models/menu_model.dart';
+import 'package:frontend/screens/item_window.dart';
+import 'package:frontend/screens/page_route/hero_dialog_route.dart';
 
 import '../constants.dart';
 import '../providers/menu_provider.dart';
@@ -76,37 +78,47 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Color(
-                                    0xFFFF9644,
-                                  ).withValues(alpha: 0.50),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                margin: EdgeInsets.symmetric(horizontal: 10),
-                                width: double.infinity,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      menuItems[index].label!,
-                                      style: TextStyle(
-                                        color: kPrimaryColor,
-                                        fontFamily: "flame",
-                                        fontSize: 14,
-                                      ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(HeroDialogRoute(builder: (context) {
+                                    return ItemWindow(index: index,);
+                                  }));
+                                },
+                                child: Hero(
+                                  tag: "$itemTag-$index",
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(
+                                        0xFFFF9644,
+                                      ).withValues(alpha: 0.50),
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
-                                    SizedBox(height: 10),
-                                    Text(
-                                      "1.5PHP",
-                                      style: TextStyle(
-                                        color: kPrimaryColor,
-                                        fontFamily: "flame",
-                                        fontSize: 13,
-                                      ),
+                                    margin: EdgeInsets.symmetric(horizontal: 10),
+                                    width: double.infinity,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          menuItems[index].label!,
+                                          style: TextStyle(
+                                            color: kPrimaryColor,
+                                            fontFamily: "flame",
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                        SizedBox(height: 10),
+                                        Text(
+                                          "1.5PHP",
+                                          style: TextStyle(
+                                            color: kPrimaryColor,
+                                            fontFamily: "flame",
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                        SizedBox(height: 10),
+                                      ],
                                     ),
-                                    SizedBox(height: 10),
-                                  ],
+                                  ),
                                 ),
                               ),
                             ),
