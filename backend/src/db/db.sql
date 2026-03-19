@@ -1,6 +1,7 @@
 CREATE TABLE owner (
   owner_id int PRIMARY KEY,
   owner_username varchar(55) UNIQUE NOT NULL,
+  full_name varchar(55) NOT NULL,
   hashed_password varchar(55) NOT NULL
 );
 
