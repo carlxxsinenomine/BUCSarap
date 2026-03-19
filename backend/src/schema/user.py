@@ -9,8 +9,8 @@ class UserCreate(BaseModel):
     password: str = Field(min_length=8, description="Please enter a strong and valid password")
 
 class UserResponse(BaseModel):
-    id: UUID
-    username: str
+    owner_id: UUID
+    owner_username: str
     full_name: str
 
     # Translates default dictionaries to objects. This prevents app crash 
