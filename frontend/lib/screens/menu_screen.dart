@@ -22,6 +22,8 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     final menuItems = ref.read(menuProvider);
+    final double screenWidth = MediaQuery.sizeOf(context).width;
+    final double screenHeight = MediaQuery.sizeOf(context).height;
     // final testProducts = ref.read(productProvider);
     return Scaffold(
       appBar: AppBar(
@@ -68,18 +70,72 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(HeroDialogRoute(builder: (context) {
-                            return ItemWindow(index: index,);
-                          }));
+                          Navigator.of(context).push(
+                            HeroDialogRoute(
+                              builder: (context) {
+                                return ItemWindow(
+                                  index: index,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 200,
+                                    ),
+                                    child: Container(
+                                      height: double.infinity,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFFEFE2D3),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: [
+                                            Flexible(
+                                              flex: 6,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xFFFF9644),
+                                                ),
+                                                child: Text("Picture"),
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Row(
+                                                children: [
+                                                  IconButton(
+                                                    onPressed: () {},
+                                                    icon: Image.asset("images/icons/subtract_icon.png"),
+                                                  ),
+                                                  Text("0"),
+                                                  IconButton(
+                                                    onPressed: () {},
+                                                    icon: Image.asset("images/icons/add_icon.png"),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            GestureDetector(
+                                              child: Container(
+                                                child: Text("Button"),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          );
                         },
                         child: Hero(
                           tag: "$itemTag-$index",
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 10),
                             decoration: BoxDecoration(
-                              color: Color(
-                                0xFFFF9644
-                              ).withValues(alpha: 0.50),
+                              color: Color(0xFFFF9644).withValues(alpha: 0.50),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Column(
@@ -93,7 +149,9 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                                       ).withValues(alpha: 0.50),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    margin: EdgeInsets.symmetric(horizontal: 10),
+                                    margin: EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                    ),
                                     width: double.infinity,
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.end,
@@ -140,16 +198,6 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                                   ),
                                 ),
                                 SizedBox(height: 10),
-                                // Row(
-                                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                //   children: [
-                                //     Expanded(child: SizedBox()),
-                                //     CountButton(symbol: "-"),
-                                //     Text("0"),
-                                //     CountButton(symbol: "+"),
-                                //     Expanded(child: SizedBox()),
-                                //   ],
-                                // ),
                               ],
                             ),
                           ),

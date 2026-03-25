@@ -5,8 +5,9 @@ import 'package:frontend/constants.dart';
 
 class ItemWindow extends StatefulWidget {
   final int? index;
+  final Widget? child;
+  const ItemWindow({required this.index, required this.child});
 
-  const ItemWindow({required this.index});
 
   @override
   State<ItemWindow> createState() => _ItemWindowState();
@@ -22,11 +23,7 @@ class _ItemWindowState extends State<ItemWindow> {
           tag: "$itemTag-${widget.index}",
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 100,
-              width: double.infinity,
-              color: Color(0xFFFF9644).withValues(alpha: 0.50),
-            ),
+            child: widget.child!,
           ),
         ),
       ),
