@@ -55,7 +55,6 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                   style: TextStyle(fontSize: 30, fontFamily: "flame"),
                 ),
               ),
-              //   TODO: Implement SingleChildScroll
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -85,41 +84,87 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                                       width: double.infinity,
                                       decoration: BoxDecoration(
                                         color: Color(0xFFEFE2D3),
-                                        borderRadius: BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8,
+                                          horizontal: 26,
+                                        ),
                                         child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
                                           children: [
-                                            Flexible(
-                                              flex: 6,
+                                            Expanded(child: SizedBox()),
+                                            Expanded(
+                                              flex: 16,
                                               child: Container(
+                                                width: double.infinity,
                                                 decoration: BoxDecoration(
                                                   color: Color(0xFFFF9644),
+                                                  borderRadius: BorderRadius.circular(10)
                                                 ),
-                                                child: Text("Picture"),
+                                                // Fix yellow underline under text: https://stackoverflow.com/questions/47114639/yellow-lines-under-text-widgets-in-flutter
+                                                child: DefaultTextStyle(
+                                                  style: TextStyle(),
+                                                  child: Text("Picture"),
+                                                ),
                                               ),
                                             ),
-                                            Flexible(
-                                              child: Row(
-                                                children: [
-                                                  IconButton(
-                                                    onPressed: () {},
-                                                    icon: Image.asset("images/icons/subtract_icon.png"),
+                                            Expanded(child: SizedBox()),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                IconButton(
+                                                  onPressed: () {},
+                                                  icon: Image.asset(
+                                                    color: Color(0xFFFF9644),
+                                                    scale: 1.4,
+                                                    "images/icons/subtract_icon.png",
                                                   ),
-                                                  Text("0"),
-                                                  IconButton(
-                                                    onPressed: () {},
-                                                    icon: Image.asset("images/icons/add_icon.png"),
+                                                ),
+                                                Center(
+                                                  child: DefaultTextStyle(
+                                                    style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontFamily: "flame",
+                                                      fontSize: 25,
+                                                    ),
+                                                    child: Text("0"),
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                                IconButton(
+                                                  onPressed: () {},
+                                                  icon: Image.asset(
+                                                    scale: 1.4,
+                                                    color: Color(0xFFFF9644),
+                                                    "images/icons/add_icon.png",
+                                                  ),
+                                                ),
+                                              ],
                                             ),
+                                            Expanded(child: SizedBox()),
                                             GestureDetector(
                                               child: Container(
-                                                child: Text("Button"),
+                                                height: 46,
+                                                width: double.infinity,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.black,
+                                                  borderRadius:
+                                                      BorderRadius.circular(25),
+                                                ),
+                                                child: DefaultTextStyle(
+                                                  style: TextStyle(
+                                                    fontFamily: "flame",
+                                                  ),
+                                                  child: Center(
+                                                    child: Text("Add to cart"),
+                                                  ),
+                                                ),
                                               ),
                                             ),
+                                            Expanded(child: SizedBox()),
                                           ],
                                         ),
                                       ),
