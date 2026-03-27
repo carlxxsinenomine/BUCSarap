@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:frontend/models/product_pile_model.dart';
+import 'package:frontend/providers/cart_provider.dart';
 import 'package:frontend/screens/item_window.dart';
 import 'package:frontend/screens/page_route/hero_dialog_route.dart';
 
@@ -21,7 +23,6 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
     final menuItems = ref.read(menuProvider);
     final double _ = MediaQuery.sizeOf(context).width;
     final double _ = MediaQuery.sizeOf(context).height;
-
     // final testProducts = ref.read(productProvider);
     return Scaffold(
       appBar: AppBar(
@@ -71,6 +72,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                             HeroDialogRoute(
                               builder: (context) {
                                 return ItemWindow(
+                                  productID: menuItems[index].productID,
                                   index: index,
                                 );
                               },

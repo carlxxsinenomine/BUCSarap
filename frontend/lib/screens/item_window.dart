@@ -3,11 +3,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/constants.dart';
+import 'package:frontend/models/product_model.dart';
+import 'package:frontend/models/product_pile_model.dart';
+import 'package:frontend/providers/cart_provider.dart';
+import 'package:frontend/providers/menu_provider.dart';
 
 class ItemWindow extends ConsumerStatefulWidget {
+  final int? productID;
   final int? index;
-  const ItemWindow({super.key, required this.index});
 
+  const ItemWindow({super.key, required this.productID, this.index});
 
   @override
   ConsumerState<ItemWindow> createState() => _ItemWindowState();
@@ -22,8 +27,12 @@ class _ItemWindowState extends ConsumerState<ItemWindow> {
     super.initState();
     itemQuantity = 0;
   }
+
   @override
   Widget build(BuildContext context) {
+    final cartProducts = ref.watch(cartNotifierProvider);
+    final productList = ref.read(menuProvider);
+
     return Center(
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
@@ -40,9 +49,7 @@ class _ItemWindowState extends ConsumerState<ItemWindow> {
                 height: double.infinity,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(
-                    0xFFFFC570,
-                  ).withValues(alpha: 0.9),
+                  color: Color(0xFFFFC570).withValues(alpha: 0.9),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Padding(
@@ -51,8 +58,7 @@ class _ItemWindowState extends ConsumerState<ItemWindow> {
                     horizontal: 26,
                   ),
                   child: Column(
-                    mainAxisAlignment:
-                    MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Expanded(child: SizedBox()),
                       Expanded(
@@ -61,8 +67,7 @@ class _ItemWindowState extends ConsumerState<ItemWindow> {
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: Colors.black45,
-                            borderRadius:
-                            BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           // Fix yellow underline under text: https://stackoverflow.com/questions/47114639/yellow-lines-under-text-widgets-in-flutter
                           child: DefaultTextStyle(
@@ -77,14 +82,11 @@ class _ItemWindowState extends ConsumerState<ItemWindow> {
                         child: Container(
                           decoration: BoxDecoration(
                             color: Color(0xFFD66F1D),
-                            borderRadius:
-                            BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           child: Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.end,
-                            crossAxisAlignment:
-                            CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Center(
                                 child: DefaultTextStyle(
@@ -100,7 +102,7 @@ class _ItemWindowState extends ConsumerState<ItemWindow> {
                               IconButton(
                                 onPressed: () {
                                   setState(() {
-                                    if(itemQuantity != 0) {
+                                    if (itemQuantity != 0) {
                                       itemQuantity -= 1;
                                     }
                                   });
@@ -133,27 +135,24 @@ class _ItemWindowState extends ConsumerState<ItemWindow> {
                           // Expanded(child: SizedBox()),
                           Expanded(
                             child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).pop();
+                              },
                               child: Container(
                                 height: 46,
                                 // width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Color(0x6CFF8B5A)
-                                      .withValues(
-                                    alpha: 0.5,
-                                  ),
-                                  borderRadius:
-                                  BorderRadius.circular(
-                                    25,
-                                  ),
+                                  color: Color(
+                                    0x6CFF8B5A,
+                                  ).withValues(alpha: 0.5),
+                                  borderRadius: BorderRadius.circular(25),
                                 ),
                                 child: DefaultTextStyle(
                                   style: TextStyle(
                                     fontFamily: "flame",
                                     color: Colors.black,
                                   ),
-                                  child: Center(
-                                    child: Text("Cancel"),
-                                  ),
+                                  child: Center(child: Text("Cancel")),
                                 ),
                               ),
                             ),
@@ -161,24 +160,20 @@ class _ItemWindowState extends ConsumerState<ItemWindow> {
                           SizedBox(width: 10),
                           Expanded(
                             child: GestureDetector(
+                              onTap: () {
+                                ref
+                                    .read(cartNotifierProvider.notifier)
+                                    .addProduct(ProductPile(productID: widget.productID, quantity: itemQuantity));
+                              },
                               child: Container(
                                 height: 46,
                                 decoration: BoxDecoration(
-                                  color: Color(
-                                    0xFFFF5A5A,
-                                  ),
-                                  borderRadius:
-                                  BorderRadius.circular(
-                                    25,
-                                  ),
+                                  color: Color(0xFFFF5A5A),
+                                  borderRadius: BorderRadius.circular(25),
                                 ),
                                 child: DefaultTextStyle(
-                                  style: TextStyle(
-                                    fontFamily: "flame",
-                                  ),
-                                  child: Center(
-                                    child: Text("Add"),
-                                  ),
+                                  style: TextStyle(fontFamily: "flame"),
+                                  child: Center(child: Text("Add")),
                                 ),
                               ),
                             ),
