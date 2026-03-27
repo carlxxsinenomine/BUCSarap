@@ -1,10 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:frontend/components/menu_screen/count_button.dart';
-import 'package:frontend/main.dart';
-import 'package:frontend/models/menu_model.dart';
 import 'package:frontend/screens/item_window.dart';
 import 'package:frontend/screens/page_route/hero_dialog_route.dart';
 
@@ -24,8 +19,9 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     final menuItems = ref.read(menuProvider);
-    final double screenWidth = MediaQuery.sizeOf(context).width;
-    final double screenHeight = MediaQuery.sizeOf(context).height;
+    final double _ = MediaQuery.sizeOf(context).width;
+    final double _ = MediaQuery.sizeOf(context).height;
+
     // final testProducts = ref.read(productProvider);
     return Scaffold(
       appBar: AppBar(
@@ -76,135 +72,6 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                               builder: (context) {
                                 return ItemWindow(
                                   index: index,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                      vertical: 200,
-                                    ),
-                                    child: Container(
-                                      height: double.infinity,
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFFF9644),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 8,
-                                          horizontal: 26,
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Expanded(child: SizedBox()),
-                                            Expanded(
-                                              flex: 16,
-                                              child: Container(
-                                                width: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.black45,
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                // Fix yellow underline under text: https://stackoverflow.com/questions/47114639/yellow-lines-under-text-widgets-in-flutter
-                                                child: DefaultTextStyle(
-                                                  style: TextStyle(),
-                                                  child: Text("Picture"),
-                                                ),
-                                              ),
-                                            ),
-                                            Expanded(child: SizedBox()),
-                                            Expanded(
-                                              flex: 3,
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  IconButton(
-                                                    onPressed: () {},
-                                                    icon: Image.asset(
-                                                      color: Colors.black45,
-                                                      scale: 1.4,
-                                                      "images/icons/subtract_icon.png",
-                                                    ),
-                                                  ),
-                                                  Center(
-                                                    child: DefaultTextStyle(
-                                                      style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontFamily: "flame",
-                                                        fontSize: 25,
-                                                      ),
-                                                      child: Text("0"),
-                                                    ),
-                                                  ),
-                                                  IconButton(
-                                                    onPressed: () {},
-                                                    icon: Image.asset(
-                                                      scale: 1.4,
-                                                      color: Colors.black45,
-                                                      "images/icons/add_icon.png",
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Expanded(child: SizedBox()),
-                                            Row(
-                                              children: [
-                                                // Expanded(child: SizedBox()),
-                                                Expanded(
-                                                  child: GestureDetector(
-                                                    child: Container(
-                                                      height: 46,
-                                                      // width: double.infinity,
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.black,
-                                                        borderRadius:
-                                                        BorderRadius.circular(25),
-                                                      ),
-                                                      child: DefaultTextStyle(
-                                                        style: TextStyle(
-                                                          fontFamily: "flame",
-                                                        ),
-                                                        child: Center(
-                                                          child: Text("Cancel"),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                SizedBox(width: 10,),
-                                                Expanded(
-                                                  child: GestureDetector(
-                                                    child: Container(
-                                                      height: 46,
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.black,
-                                                        borderRadius:
-                                                        BorderRadius.circular(25),
-                                                      ),
-                                                      child: DefaultTextStyle(
-                                                        style: TextStyle(
-                                                          fontFamily: "flame",
-                                                        ),
-                                                        child: Center(
-                                                          child: Text("Add"),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                // Expanded(child: SizedBox()),
-                                              ],
-                                            ),
-                                            Expanded(child: SizedBox()),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
                                 );
                               },
                             ),
@@ -215,7 +82,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 10),
                             decoration: BoxDecoration(
-                              color: Color(0xFFFF9644).withValues(alpha: 0.50),
+                              color: Color(0xFFFFC570).withValues(alpha: 0.50),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Column(

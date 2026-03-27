@@ -53,15 +53,24 @@ class _CartContainerState extends ConsumerState<CartContainer>
           child: Container(
             height: 400,
             width: screenWidth,
-            color: Color(0xFFD9BFA1).withValues(alpha: 0.7),
-            child: Column(),
+            color: Color(0xFFFFC570).withValues(alpha: 0.7),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Container(
+
+                  )
+                ],
+              ),
+            ),
           ),
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 30),
           height: 100,
           width: screenWidth,
-          color: Color(0xFFD9BFA1).withValues(alpha: 0.7),
+          color: Color(0xFFFFC570).withValues(alpha: 0.7),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
