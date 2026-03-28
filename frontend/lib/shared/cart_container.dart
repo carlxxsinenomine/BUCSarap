@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:frontend/providers/cart_provider.dart';
+import 'package:frontend/providers/stall_provider.dart';
 import 'package:frontend/shared/back_button_container.dart';
 import 'package:frontend/components/stall_selection_screen/card_container.dart';
 import 'package:frontend/main.dart';
@@ -44,6 +46,8 @@ class _CartContainerState extends ConsumerState<CartContainer>
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
 
+    final cartProducts = ref.watch(cartNotifierProvider);
+
     return Column(
       children: [
         SizeTransition(
@@ -51,18 +55,31 @@ class _CartContainerState extends ConsumerState<CartContainer>
           axis: Axis.vertical,
           axisAlignment: -1,
           child: Container(
-            height: 400,
+            height: 430,
             width: screenWidth,
             color: Color(0xFFFFC570).withValues(alpha: 0.7),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Container(
-
-                  )
-                ],
-              ),
+            child: Column(
+              children: [
+                Text("data"),
+                Container(
+                  height: 400,
+                  padding: const EdgeInsets.only(left: 10, right: 10, top: 8),
+                  child: ListView.builder(
+                    itemCount: cartProducts.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        width: double.infinity,
+                        height: 100,
+                        margin: EdgeInsets.symmetric(vertical: 5),
+                        decoration: BoxDecoration(
+                          color: Colors.black45,
+                          borderRadius: BorderRadius.circular(10)
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
           ),
         ),
