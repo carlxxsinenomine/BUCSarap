@@ -48,6 +48,8 @@ class _CartContainerState extends ConsumerState<CartContainer>
 
     final cartProducts = ref.watch(cartNotifierProvider);
 
+    final ScrollController _scrollController = ScrollController();
+
     return Column(
       children: [
         SizeTransition(
@@ -65,6 +67,7 @@ class _CartContainerState extends ConsumerState<CartContainer>
                   height: 400,
                   padding: const EdgeInsets.only(left: 10, right: 10, top: 8),
                   child: ListView.builder(
+                    controller: _scrollController,
                     itemCount: cartProducts.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
@@ -73,7 +76,7 @@ class _CartContainerState extends ConsumerState<CartContainer>
                         margin: EdgeInsets.symmetric(vertical: 5),
                         decoration: BoxDecoration(
                           color: Colors.black45,
-                          borderRadius: BorderRadius.circular(10)
+                          borderRadius: BorderRadius.circular(10),
                         ),
                       );
                     },
@@ -91,7 +94,17 @@ class _CartContainerState extends ConsumerState<CartContainer>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              OrderButton(onTap: () => _toggleContainer(), label: 'My Order'),
+              OrderButton(
+                onTap: () {
+                  _toggleContainer();
+                  if (_scrollController.hasClients) {
+                    _scrollController.jumpTo(
+                      0.0,
+                    );
+                  }
+                },
+                label: 'My Order',
+              ),
               Expanded(flex: 4, child: SizedBox()),
               Text(
                 "|",
