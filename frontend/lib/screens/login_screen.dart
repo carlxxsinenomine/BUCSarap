@@ -24,15 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pop(context);
           },
         ),
-        actions: [
-          Container(
-            margin: EdgeInsets.only(right: 25),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.shopping_cart, color: Color(0xFFDA782B)),
-            ),
-          ),
-        ],
       ),
       body: Center(
         child: Padding(
