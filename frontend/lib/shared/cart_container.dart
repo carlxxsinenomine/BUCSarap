@@ -68,7 +68,7 @@ class _CartContainerState extends ConsumerState<CartContainer>
                         width: double.infinity,
                         height: 90,
                         margin: EdgeInsets.symmetric(vertical: 5),
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.symmetric(horizontal: 19, vertical: 20),
                         decoration: BoxDecoration(
                           color: Color(0xFFFF9644),
                           borderRadius: BorderRadius.circular(10),
@@ -98,36 +98,33 @@ class _CartContainerState extends ConsumerState<CartContainer>
                               ],
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 30),
-                              height: 30,
-                              decoration: BoxDecoration(
-
-                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                              height: double.infinity,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   GestureDetector(
                                     child: Container(
-                                      margin: EdgeInsets.zero,
                                       child: Icon(Icons.arrow_back_ios),
                                     ),
                                   ),
-                                  VerticalDivider(color: Colors.black45,),
+                                  VerticalDivider(color: Colors.black,),
                                   Center(
                                     child: Text(
                                       "0",
                                       style: TextStyle(
-                                        fontFamily: "Flame",
+                                        fontFamily: "Roboto",
                                         fontSize: 19,
+                                        fontWeight: FontWeight.bold
                                       ),
                                     ),
                                   ),
-                                  VerticalDivider(color: Colors.black45,),
+                                  VerticalDivider(color: Colors.black,),
                                   GestureDetector(
                                     child: Container(
-                                      margin: EdgeInsets.only(left: 5),
                                       child: Icon(Icons.arrow_forward_ios),
+                                      margin: EdgeInsets.only(left: 6.1), // Dunno the fix, if solid 6 medj fade color nung divider
                                     ),
                                   ),
                                 ],
