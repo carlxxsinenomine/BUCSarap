@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/providers/cart_provider.dart';
 import 'package:frontend/shared/order_button.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class CartContainer extends ConsumerStatefulWidget {
   const CartContainer({super.key});
@@ -59,78 +59,113 @@ class _CartContainerState extends ConsumerState<CartContainer>
                 // Text("My Cart", style: TextStyle(fontFamily: "Flame", fontSize: 20)),
                 Container(
                   height: 400,
-                  padding: const EdgeInsets.only(left: 10, right: 10, top: 8),
+                  padding: const EdgeInsets.only(left: 10, right: 10, top: 8,),
                   child: ListView.builder(
                     controller: _scrollController,
                     itemCount: cartProducts.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        width: double.infinity,
-                        height: 90,
-                        margin: EdgeInsets.symmetric(vertical: 5),
-                        padding: EdgeInsets.symmetric(horizontal: 19, vertical: 20),
-                        decoration: BoxDecoration(
-                          color: Color(0xFFFF9644),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // https://www.geeksforgeeks.org/flutter/flutter-slidable/
+                      return Slidable(
+                        key: const ValueKey(0),
+                        endActionPane: ActionPane(
+                          motion: ScrollMotion(),
                           children: [
-                            Container(child: Text("Picture")),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Product Name",
-                                  style: TextStyle(
-                                    fontFamily: "Flame",
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  "Product Info",
-                                  style: TextStyle(
-                                    fontFamily: "Flame",
-                                    color: Colors.black45,
-                                  ),
-                                ),
-                              ],
-                            ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                              height: double.infinity,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              width: 150,
+                              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                              child: SlidableAction(
+                                onPressed: (BuildContext context) {
+                                  setState(() {
+                                    ref
+                                        .read(cartNotifierProvider.notifier)
+                                        .removeProduct(
+                                          cartProducts.elementAt(index),
+                                        );
+                                  });
+                                },
+                                label: "Delete",
+                                backgroundColor: Colors.red,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ],
+                        ),
+                        child: Container(
+                          width: double.infinity,
+                          height: 90,
+                          margin: EdgeInsets.symmetric(vertical: 5),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 19,
+                            vertical: 20,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFF9644),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(child: Text("Picture")),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  GestureDetector(
-                                    child: Container(
-                                      child: Icon(Icons.arrow_back_ios),
+                                  Text(
+                                    "Product Name",
+                                    style: TextStyle(
+                                      fontFamily: "Flame",
+                                      fontSize: 16,
                                     ),
                                   ),
-                                  VerticalDivider(color: Colors.black,),
-                                  Center(
-                                    child: Text(
-                                      "0",
-                                      style: TextStyle(
-                                        fontFamily: "Roboto",
-                                        fontSize: 19,
-                                        fontWeight: FontWeight.bold
-                                      ),
-                                    ),
-                                  ),
-                                  VerticalDivider(color: Colors.black,),
-                                  GestureDetector(
-                                    child: Container(
-                                      child: Icon(Icons.arrow_forward_ios),
-                                      margin: EdgeInsets.only(left: 6.1), // Dunno the fix, if solid 6 medj fade color nung divider
+                                  Text(
+                                    "Product Info",
+                                    style: TextStyle(
+                                      fontFamily: "Flame",
+                                      color: Colors.black45,
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 10,
+                                ),
+                                height: double.infinity,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    GestureDetector(
+                                      child: Container(
+                                        child: Icon(Icons.arrow_back_ios),
+                                      ),
+                                    ),
+                                    VerticalDivider(color: Colors.black),
+                                    Center(
+                                      child: Text(
+                                        "0",
+                                        style: TextStyle(
+                                          fontFamily: "Roboto",
+                                          fontSize: 19,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    VerticalDivider(color: Colors.black),
+                                    GestureDetector(
+                                      child: Container(
+                                        child: Icon(Icons.arrow_forward_ios),
+                                        margin: EdgeInsets.only(
+                                          left: 6.1,
+                                        ), // Dunno the fix, if solid 6 medj fade color nung divider
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },
