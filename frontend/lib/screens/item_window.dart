@@ -161,9 +161,16 @@ class _ItemWindowState extends ConsumerState<ItemWindow> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                ref
-                                    .read(cartNotifierProvider.notifier)
-                                    .addProduct(ProductPile(productID: widget.productID, quantity: itemQuantity));
+                                if (itemQuantity > 0) {
+                                  ref
+                                      .read(cartNotifierProvider.notifier)
+                                      .addProduct(
+                                        ProductPile(
+                                          productID: widget.productID,
+                                          quantity: itemQuantity,
+                                        ),
+                                      );
+                                }
                               },
                               child: Container(
                                 height: 46,

@@ -2,13 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/providers/cart_provider.dart';
-import 'package:frontend/providers/stall_provider.dart';
-import 'package:frontend/shared/back_button_container.dart';
-import 'package:frontend/components/stall_selection_screen/card_container.dart';
-import 'package:frontend/main.dart';
-import 'package:frontend/models/stall_model.dart';
 import 'package:frontend/shared/order_button.dart';
-import 'order_button.dart';
 
 class CartContainer extends ConsumerStatefulWidget {
   const CartContainer({super.key});
@@ -59,10 +53,10 @@ class _CartContainerState extends ConsumerState<CartContainer>
           child: Container(
             height: 430,
             width: screenWidth,
-            color: Color(0xFFFFC570).withValues(alpha: 0.7),
+            color: Color(0xFFFFC570).withValues(alpha: 0.5),
             child: Column(
               children: [
-                Text("data"),
+                // Text("My Cart", style: TextStyle(fontFamily: "Flame", fontSize: 20)),
                 Container(
                   height: 400,
                   padding: const EdgeInsets.only(left: 10, right: 10, top: 8),
@@ -72,11 +66,74 @@ class _CartContainerState extends ConsumerState<CartContainer>
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         width: double.infinity,
-                        height: 100,
+                        height: 90,
                         margin: EdgeInsets.symmetric(vertical: 5),
+                        padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: Colors.black45,
+                          color: Color(0xFFFF9644),
                           borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(child: Text("Picture")),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Product Name",
+                                  style: TextStyle(
+                                    fontFamily: "Flame",
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                Text(
+                                  "Product Info",
+                                  style: TextStyle(
+                                    fontFamily: "Flame",
+                                    color: Colors.black45,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 30),
+                              height: 30,
+                              decoration: BoxDecoration(
+
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  GestureDetector(
+                                    child: Container(
+                                      margin: EdgeInsets.zero,
+                                      child: Icon(Icons.arrow_back_ios),
+                                    ),
+                                  ),
+                                  VerticalDivider(color: Colors.black45,),
+                                  Center(
+                                    child: Text(
+                                      "0",
+                                      style: TextStyle(
+                                        fontFamily: "Flame",
+                                        fontSize: 19,
+                                      ),
+                                    ),
+                                  ),
+                                  VerticalDivider(color: Colors.black45,),
+                                  GestureDetector(
+                                    child: Container(
+                                      margin: EdgeInsets.only(left: 5),
+                                      child: Icon(Icons.arrow_forward_ios),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       );
                     },
@@ -90,7 +147,7 @@ class _CartContainerState extends ConsumerState<CartContainer>
           padding: EdgeInsets.symmetric(horizontal: 30),
           height: 100,
           width: screenWidth,
-          color: Color(0xFFFFC570).withValues(alpha: 0.7),
+          color: Color(0xFFFFC570).withValues(alpha: 0.5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -98,9 +155,7 @@ class _CartContainerState extends ConsumerState<CartContainer>
                 onTap: () {
                   _toggleContainer();
                   if (_scrollController.hasClients) {
-                    _scrollController.jumpTo(
-                      0.0,
-                    );
+                    _scrollController.jumpTo(0.0);
                   }
                 },
                 label: 'My Order',
