@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:frontend/providers/cart_provider.dart';
 import 'package:frontend/shared/back_button_container.dart';
 import 'package:frontend/components/stall_selection_screen/card_container.dart';
 import 'package:frontend/main.dart';
+import 'package:frontend/shared/cart_button.dart';
 import 'package:frontend/shared/cart_container.dart';
 import 'package:frontend/shared/order_button.dart';
 
@@ -45,6 +47,8 @@ class _StallSelectionScreenState extends ConsumerState<StallSelectionScreen>
   @override
   Widget build(BuildContext context) {
     final testProducts = ref.read(productProvider);
+    final cartProducts = ref.watch(cartNotifierProvider);
+
     final screenWidth = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
@@ -58,13 +62,7 @@ class _StallSelectionScreenState extends ConsumerState<StallSelectionScreen>
           },
         ),
         actions: [
-          Container(
-            margin: EdgeInsets.only(right: 25),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.shopping_cart, color: Color(0xFFDA782B)),
-            ),
-          ),
+          CartButton(productQuantity: cartProducts.length,)
         ],
       ),
       body: Stack(

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/screens/item_window.dart';
 import 'package:frontend/screens/page_route/hero_dialog_route.dart';
+import 'package:frontend/shared/cart_button.dart';
 
 import '../constants.dart';
+import '../providers/cart_provider.dart';
 import '../providers/menu_provider.dart';
 import '../shared/back_button_container.dart';
 import '../shared/cart_container.dart';
@@ -19,6 +21,8 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     final menuItems = ref.read(menuProvider);
+    final cartProducts = ref.watch(cartNotifierProvider);
+
     final double _ = MediaQuery.sizeOf(context).width;
     final double _ = MediaQuery.sizeOf(context).height;
     // final testProducts = ref.read(productProvider);
@@ -33,13 +37,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
           },
         ),
         actions: [
-          Container(
-            margin: EdgeInsets.only(right: 25),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.shopping_cart, color: Color(0xFFDA782B)),
-            ),
-          ),
+          CartButton(productQuantity: cartProducts.length,)
         ],
       ),
       body: Stack(
