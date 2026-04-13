@@ -175,9 +175,10 @@ class _CartContainerState extends ConsumerState<CartContainer>
                                                   );
                                             });
                                           },
-                                          child: Icon(
-                                            size: 20,
-                                            Icons.arrow_back_ios,
+                                          child: Image.asset(
+                                            scale: 1.7,
+                                            color: Colors.black,
+                                            "images/icons/subtract_icon.png",
                                           ),
                                         ),
                                         VerticalDivider(color: Colors.black),
@@ -212,10 +213,11 @@ class _CartContainerState extends ConsumerState<CartContainer>
                                           },
                                           child: Container(
                                             margin: EdgeInsets.only(left: 6.1),
-                                            child: Icon(
-                                              size: 20,
-                                              Icons.arrow_forward_ios,
-                                            ), // Dunno the fix, if solid 6 medj fade color nung divider
+                                            child: Image.asset(
+                                              scale: 1.7,
+                                              color: Colors.black,
+                                              "images/icons/add_icon.png",
+                                            ),// Dunno the fix, if solid 6 medj fade color nung divider
                                           ),
                                         ),
                                       ],

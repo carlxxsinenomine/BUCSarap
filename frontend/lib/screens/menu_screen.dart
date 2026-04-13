@@ -95,32 +95,12 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                                     margin: EdgeInsets.symmetric(
                                       horizontal: 10,
                                     ),
+                                    // padding: EdgeInsets.all(1),
                                     width: double.infinity,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          menuItems[index].productName!,
-                                          style: TextStyle(
-                                            color: kPrimaryColor,
-                                            fontFamily: "flame",
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                        SizedBox(height: 10),
-                                        Flexible(
-                                          child: Text(
-                                            "1.5PHP",
-                                            style: TextStyle(
-                                              color: kPrimaryColor,
-                                              fontFamily: "flame",
-                                              fontSize: 13,
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(height: 10),
-                                      ],
-                                    ),
+                                    child: FittedBox(
+                                      fit: BoxFit.fill,
+                                      child: Image.asset("images/foods/beef_steak.jpg",),
+                                    )
                                   ),
                                 ),
                                 Text(

@@ -12,7 +12,9 @@ class CartButton extends StatelessWidget {
       child: Stack(
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/cart_screen');
+            },
             icon: Icon(Icons.shopping_cart, color: Color(0xFFDA782B)),
           ),
           if (productQuantity != 0)
