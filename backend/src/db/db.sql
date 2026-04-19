@@ -49,7 +49,8 @@ CREATE TABLE orders (
   order_time timestamp DEFAULT CURRENT_TIMESTAMP,
   processing_time timestamp,
   customer_name varchar(55),
-  FOREIGN KEY (product_pile_id) REFERENCES product_pile(product_pile_id)
+  FOREIGN KEY (product_pile_id) REFERENCES product_pile(product_pile_id),
+  FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
 );
 
 CREATE TABLE history (
