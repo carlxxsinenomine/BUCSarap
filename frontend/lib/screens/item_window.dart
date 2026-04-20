@@ -72,7 +72,10 @@ class _ItemWindowState extends ConsumerState<ItemWindow> {
                           // Fix yellow underline under text: https://stackoverflow.com/questions/47114639/yellow-lines-under-text-widgets-in-flutter
                           child: DefaultTextStyle(
                             style: TextStyle(),
-                            child: Text("Picture"),
+                            child: FittedBox(
+                              fit: BoxFit.fill,
+                                child: Image.asset("images/foods/beef_steak.jpg")
+                            )
                           ),
                         ),
                       ),
