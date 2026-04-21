@@ -23,6 +23,12 @@ class _StallHolderScreenState extends State<StallHolderScreen> {
             Navigator.pop(context);
           },
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.add, color: Color(0xFFDA782B)),
+          ),
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -41,7 +47,7 @@ class _StallHolderScreenState extends State<StallHolderScreen> {
                   crossAxisCount: 2,
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
-                  childAspectRatio: 1,
+                  childAspectRatio: 0.8,
                 ),
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
@@ -52,45 +58,60 @@ class _StallHolderScreenState extends State<StallHolderScreen> {
                     ),
                     child: Column(
                       children: [
-                        Expanded(flex: 2,child: Container(decoration: BoxDecoration())),
                         Expanded(
-                          child: Row(
+                          flex: 2,
+                          child: Container(decoration: BoxDecoration()),
+                        ),
+                        SizedBox(
+                          height: 90,
+                          child: Column(
                             children: [
                               Expanded(
                                 child: GestureDetector(
                                   child: Container(
+                                    height: 42,
                                     decoration: BoxDecoration(
                                       color: Color(0xFFEC1C24),
-                                      // border: Border.all(
-                                      //   width: 2,
-                                      //   color: Color(0xFFB67C4F),
-                                      // ),
-                                      borderRadius: BorderRadius.circular(25),
+                                      borderRadius: BorderRadius.circular(
+                                        22,
+                                      ), // rect feels more native than pill
                                     ),
                                     child: Center(
                                       child: Text(
                                         'Remove',
-                                        style: TextStyle(color: Colors.white),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Flame',
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
+                              SizedBox(height: 2),
                               Expanded(
                                 child: GestureDetector(
                                   child: Container(
+                                    height: 38,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFED7902),
+                                      color: Colors.black.withValues(
+                                        alpha: 0.08,
+                                      ),
+                                      borderRadius: BorderRadius.circular(22),
                                       border: Border.all(
                                         width: 2,
-                                        color: Color(0xFFDA782B),
+                                        color: Color(0xFFC46200),
                                       ),
-                                      borderRadius: BorderRadius.circular(25),
                                     ),
                                     child: Center(
                                       child: Text(
-                                        'Sold out',
-                                        style: TextStyle(color: Colors.black),
+                                        'Not available',
+                                        style: TextStyle(
+                                          color: Color(0xFF7A3D00),
+                                          fontFamily: 'Flame',
+                                          fontSize: 13,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -98,8 +119,7 @@ class _StallHolderScreenState extends State<StallHolderScreen> {
                               ),
                             ],
                           ),
-                        )
-
+                        ),
                       ],
                     ),
                   );
@@ -110,7 +130,9 @@ class _StallHolderScreenState extends State<StallHolderScreen> {
           // Home, Queue, Processed History, Analytics?
           Container(
             height: 100,
-            decoration: BoxDecoration(color: Color(0xFFFF9644)),
+            decoration: BoxDecoration(
+              color: Color(0xFFFFC570).withValues(alpha: 0.8),
+            ),
             child: Row(
               children: [
                 // TODO: Create a separate class for this to reduce repetition
