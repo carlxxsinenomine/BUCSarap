@@ -6,12 +6,13 @@ CREATE TABLE owner (
 
 CREATE TABLE stall (
   stall_id int PRIMARY KEY AUTO_INCREMENT,
+  owner_id int NOT NULL,
   stall_name varchar(100) NOT NULL,
   opening_time time NOT NULL,
   closing_time time NOT NULL,
   operating_days varchar(55) NOT NULL,
   stall_status bool DEFAULT false,
-  FOREIGN KEY (stall_id) REFERENCES owner(owner_id)
+  FOREIGN KEY (owner_id) REFERENCES owner(owner_id)
 );
 
 CREATE TABLE product_category (  
@@ -35,7 +36,8 @@ CREATE TABLE product_pile (
   product_id int NOT NULL,
   stall_id int NOT NULL,
   product_quantity int NOT NULL,
-  FOREIGN KEY (product_id) REFERENCES product(product_id)
+  FOREIGN KEY (product_id) REFERENCES product(product_id),
+  FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
 );
 
 CREATE TABLE orders (
@@ -47,7 +49,8 @@ CREATE TABLE orders (
   order_time timestamp DEFAULT CURRENT_TIMESTAMP,
   processing_time timestamp,
   customer_name varchar(55),
-  FOREIGN KEY (product_pile_id) REFERENCES product_pile(product_pile_id)
+  FOREIGN KEY (product_pile_id) REFERENCES product_pile(product_pile_id),
+  FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
 );
 
 CREATE TABLE history (
