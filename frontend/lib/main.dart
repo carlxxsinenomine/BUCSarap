@@ -3,7 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/screens/cart_screen.dart';
 import 'package:frontend/screens/login_screen.dart';
 import 'package:frontend/screens/menu_screen.dart';
+import 'package:frontend/screens/stall_holder/add_product_screen.dart';
+import 'package:frontend/screens/stall_holder/analytics_screen.dart';
+import 'package:frontend/screens/stall_holder/queue_screen.dart';
 import 'package:frontend/screens/stall_holder/stall_holder_screen.dart';
+import 'package:frontend/screens/stall_holder/transaction_history_screen.dart';
 import 'package:frontend/screens/stall_selection_screen.dart';
 import 'package:frontend/screens/welcome_screen.dart';
 
@@ -27,7 +31,11 @@ class Main extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/menu_screen': (context) => MenuScreen(),
         '/cart_screen': (context) => CartScreen(),
-        '/stall_holder_screen': (context) =>StallHolderScreen()
+        '/stall_holder_screen': (context) =>StallHolderScreen(),
+        '/add_product_screen': (context) => AddProductScreen(),
+        '/queue_screen': (context) => QueueScreen(),
+        '/analytics_screen': (context) => AnalyticsScreen(),
+        '/history_screen': (context) => TransactionHistoryScreen()
       },
     );
   }

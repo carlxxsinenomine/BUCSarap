@@ -93,7 +93,7 @@ class _StallSelectionScreenState extends ConsumerState<StallSelectionScreen>
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: 10),
                           decoration: BoxDecoration(
-                            color: Color(0xFFFDBD10).withValues(alpha: 0.50),
+                            color: Color(0xFFFFE591),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Column(
