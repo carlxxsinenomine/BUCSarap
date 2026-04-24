@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/components/stall_holder/navigation_panel.dart';
 
 import '../../shared/back_button_container.dart';
 import '../../shared/cart_button.dart';
@@ -20,7 +21,7 @@ class _StallHolderScreenState extends State<StallHolderScreen> {
         leadingWidth: 140,
         leading: BackButtonContainer(
           onTap: () {
-            Navigator.pop(context);
+            Navigator.popUntil(context, ModalRoute.withName('/'));
           },
         ),
         actions: [
@@ -55,7 +56,7 @@ class _StallHolderScreenState extends State<StallHolderScreen> {
                   return Container(
                     padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Color(0xFFFDBD10).withValues(alpha: 0.50),
+                      color: Color(0xFFFFE591),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Column(
@@ -73,7 +74,7 @@ class _StallHolderScreenState extends State<StallHolderScreen> {
                                   child: Container(
                                     height: 42,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFEC1C24),
+                                      color: Color(0xFFEC1C24).withValues(alpha: 0.8),
                                       borderRadius: BorderRadius.circular(
                                         22,
                                       ), // rect feels more native than pill
@@ -97,13 +98,11 @@ class _StallHolderScreenState extends State<StallHolderScreen> {
                                   child: Container(
                                     height: 38,
                                     decoration: BoxDecoration(
-                                      color: Colors.black.withValues(
-                                        alpha: 0.08,
-                                      ),
+                                      color: Color(0xFFFF9644).withValues(alpha: 0.50),
                                       borderRadius: BorderRadius.circular(22),
                                       border: Border.all(
                                         width: 2,
-                                        color: Color(0xFFC46200),
+                                        color: Color(0xFFDA782B),
                                       ),
                                     ),
                                     child: Center(
@@ -130,59 +129,7 @@ class _StallHolderScreenState extends State<StallHolderScreen> {
             ),
           ),
           // Home, Queue, Processed History, Analytics?
-          Container(
-            height: 100,
-            decoration: BoxDecoration(
-              color: Color(0xFFFFC570).withValues(alpha: 0.8),
-            ),
-            child: Row(
-              children: [
-                // TODO: Create a separate class for this to reduce repetition
-                Expanded(
-                  child: GestureDetector(
-                    child: Container(
-                      height: 80,
-                      decoration: BoxDecoration(),
-                      child: Column(children: [Icon(Icons.home), Text("Home")]),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    child: Container(
-                      height: 80,
-                      decoration: BoxDecoration(),
-                      child: Column(
-                        children: [Icon(Icons.queue), Text("Queue")],
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    child: Container(
-                      height: 80,
-                      decoration: BoxDecoration(),
-                      child: Column(
-                        children: [Icon(Icons.analytics), Text("Analytics")],
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    child: Container(
-                      height: 80,
-                      decoration: BoxDecoration(),
-                      child: Column(
-                        children: [Icon(Icons.history), Text("History")],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+         NavigationPanel()
         ],
       ),
     );
