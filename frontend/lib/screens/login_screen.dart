@@ -73,7 +73,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 40),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, '/stall_holder_screen');
+                },
                 child: Container(
                   height: 45,
                   width: double.infinity,

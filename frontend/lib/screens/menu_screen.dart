@@ -78,7 +78,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 10),
                             decoration: BoxDecoration(
-                              color: Color(0xFFFFC570).withValues(alpha: 0.50),
+                              color: Color(0xFFFFE591),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Column(

@@ -37,6 +37,9 @@ jobs:
         run: |
           flutter analyze
         continue-on-error: true
+      - name: run_build_runner
+        run: |
+          dart run build_runner build --delete-conflicting-outputs
 
 #      In the future if hindi ako tamarin imma write my tests
 #      Pero for now comment this out just like on the backend ci
