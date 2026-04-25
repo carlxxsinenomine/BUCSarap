@@ -49,7 +49,7 @@ CREATE TABLE orders (
   order_number varchar(50) UNIQUE NOT NULL,
   order_status varchar(50) DEFAULT "Pending",
   order_time timestamp DEFAULT CURRENT_TIMESTAMP,
-  processing_time time,
+  processing_time int,
   customer_name varchar(55),
   FOREIGN KEY (product_pile_id) REFERENCES product_pile(product_pile_id),
   FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
