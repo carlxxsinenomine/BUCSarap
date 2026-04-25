@@ -12,7 +12,7 @@ CREATE TABLE stall (
   closing_time time NOT NULL,
   operating_days varchar(55) NOT NULL,
   stall_status bool DEFAULT false,
-  photo_path VARBINARY(MAX) NULL,
+  photo_path varchar(255) NOT NULL,
   FOREIGN KEY (owner_id) REFERENCES owner(owner_id)
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE product (
   product_name varchar(55) NOT NULL,
   product_price decimal(10,2) NOT NULL,
   product_status bool DEFAULT false,
-  photo_path VARBINARY(MAX) NULL,
+  photo_path varchar(255) NOT NULL,
   FOREIGN KEY (category_id) REFERENCES product_category(category_id)
 );
 
