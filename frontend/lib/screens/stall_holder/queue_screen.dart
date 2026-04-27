@@ -23,6 +23,8 @@ class _QueueScreenState extends State<QueueScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    final currentRoute = ModalRoute.of(context)?.settings.name;
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 110,
@@ -88,7 +90,7 @@ class _QueueScreenState extends State<QueueScreen> {
               ),
             ],
           ),
-          NavigationPanel(),
+          NavigationPanel(currentRoute: currentRoute as String,),
         ],
       ),
     );

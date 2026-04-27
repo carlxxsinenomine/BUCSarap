@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class NavigationPanel extends StatelessWidget {
-  const NavigationPanel({super.key});
+  const NavigationPanel({super.key, required this.currentRoute});
+
+  final String currentRoute;
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       height: 100,
       decoration: BoxDecoration(
         color: Color(0xFFFFC570).withValues(alpha: 0.8),
@@ -15,6 +17,11 @@ class NavigationPanel extends StatelessWidget {
           // TODO: Create a separate class for this to reduce repetition
           Expanded(
             child: GestureDetector(
+              onTap: () {
+                if (currentRoute != '/stall_holder_screen') {
+                  Navigator.pushNamed(context, '/stall_holder_screen');
+                }
+              },
               child: Container(
                 height: 80,
                 decoration: BoxDecoration(),
@@ -25,21 +32,23 @@ class NavigationPanel extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/queue_screen');
+                if (currentRoute != '/queue_screen') {
+                  Navigator.pushNamed(context, '/queue_screen');
+                }
               },
               child: Container(
                 height: 80,
                 decoration: BoxDecoration(),
-                child: Column(
-                  children: [Icon(Icons.queue), Text("Queue")],
-                ),
+                child: Column(children: [Icon(Icons.queue), Text("Queue")]),
               ),
             ),
           ),
           Expanded(
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/analytics_screen');
+                if (currentRoute != '/analytics_screen') {
+                  Navigator.pushNamed(context, '/analytics_screen');
+                }
               },
               child: Container(
                 height: 80,
@@ -53,15 +62,14 @@ class NavigationPanel extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/history_screen');
+                if (currentRoute != '/history_screen') {
+                  Navigator.pushNamed(context, '/history_screen');
+                }
               },
               child: Container(
-
                 height: 80,
                 decoration: BoxDecoration(),
-                child: Column(
-                  children: [Icon(Icons.history), Text("History")],
-                ),
+                child: Column(children: [Icon(Icons.history), Text("History")]),
               ),
             ),
           ),

@@ -13,6 +13,8 @@ class TransactionHistoryScreen extends StatefulWidget {
 class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
   @override
   Widget build(BuildContext context) {
+    final currentRoute = ModalRoute.of(context)?.settings.name;
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 110,
@@ -35,7 +37,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          NavigationPanel(),
+          NavigationPanel(currentRoute: currentRoute as String,),
         ],
       ),
     );

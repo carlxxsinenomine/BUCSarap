@@ -14,6 +14,8 @@ class StallHolderScreen extends StatefulWidget {
 class _StallHolderScreenState extends State<StallHolderScreen> {
   @override
   Widget build(BuildContext context) {
+    final currentRoute = ModalRoute.of(context)?.settings.name;
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 110,
@@ -129,7 +131,7 @@ class _StallHolderScreenState extends State<StallHolderScreen> {
             ),
           ),
           // Home, Queue, Processed History, Analytics?
-         NavigationPanel()
+         NavigationPanel(currentRoute: currentRoute as String,)
         ],
       ),
     );
