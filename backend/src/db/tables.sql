@@ -46,7 +46,7 @@ CREATE TABLE orders (
   order_id int PRIMARY KEY AUTO_INCREMENT,
   product_pile_id int NOT NULL,
   stall_id int NOT NULL,
-  order_number varchar(50) UNIQUE NOT NULL,
+  order_number varchar(50) NOT NULL,
   order_status varchar(50) DEFAULT "Pending",
   order_time timestamp DEFAULT CURRENT_TIMESTAMP,
   processing_time int,
