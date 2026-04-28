@@ -44,15 +44,21 @@ CREATE TABLE product_pile (
 
 CREATE TABLE orders (
   order_id int PRIMARY KEY AUTO_INCREMENT,
-  product_pile_id int NOT NULL,
   stall_id int NOT NULL,
   order_number varchar(50) NOT NULL,
   order_status varchar(50) DEFAULT "Pending",
   order_time timestamp DEFAULT CURRENT_TIMESTAMP,
   processing_time int,
   customer_name varchar(55),
-  FOREIGN KEY (product_pile_id) REFERENCES product_pile(product_pile_id),
   FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
+);
+
+CREATE TABLE order_item (
+  order_item_id int PRIMARY KEY AUTO_INCREMENT,
+  order_id int NOT NULL,
+  product_pile_id int NOT NULL,
+  FOREIGN KEY (order_id) REFERENCES orders(order_id),
+  FOREIGN KEY (product_pile_id) REFERENCES product_pile(product_pile_id)
 );
 
 CREATE TABLE history (
