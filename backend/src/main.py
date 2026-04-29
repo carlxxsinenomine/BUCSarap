@@ -15,4 +15,4 @@ app.add_middleware(
 app.include_router(users.route, prefix="/users", tags=["Users"])
 
 # Remove comment on the bottom code later, wala pa kase sa products
-#app.include_router(products.route, prefix="/products", tags=["Products"])
+app.include_router(products.route, prefix="/products", tags=["Products"])
